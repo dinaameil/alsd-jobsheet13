@@ -1,13 +1,15 @@
-class Pasien {
+public class Pasien08 {
     String nama;
     String nik;
     String keluhan;
-    Pasien next;
+    int umur;
+    Pasien08 next;
 
-    Pasien(String nama, String nik, String keluhan) {
+    public Pasien08(String nama, String nik, String keluhan, int umur) {
         this.nama = nama;
         this.nik = nik;
         this.keluhan = keluhan;
+        this.umur = umur;
         this.next = null;
     }
 }
