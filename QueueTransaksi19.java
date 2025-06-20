@@ -1,17 +1,17 @@
-class QueueTransaksi08 {
-    Transaksi08[] data;
+class QueueTransaksi19 {
+    Transaksi19[] data;
     int front, rear, size, capacity;
 
-    QueueTransaksi08(int kapasitas) {
+    QueueTransaksi19(int kapasitas) {
         capacity = kapasitas;
-        data = new Transaksi08[capacity];
+        data = new Transaksi19[capacity];
         front = rear = size = 0;
     }
 
     boolean isFull() { return size == capacity; }
     boolean isEmpty() { return size == 0; }
 
-    void enqueue(Transaksi08 t) {
+    void enqueue(Transaksi19 t) {
         if (isFull()) {
             System.out.println("Riwayat transaksi penuh!");
             return;
@@ -28,7 +28,7 @@ class QueueTransaksi08 {
         }
         int idx = front;
         for (int i = 0; i < size; i++) {
-            Transaksi08 t = data[idx];
+            Transaksi19 t = data[idx];
             System.out.println((i+1) + ". Pasien: " + t.namaPasien +  " ( " + t.durasi + " jam ) : Rp " + t.biaya);
             idx = (idx + 1) % capacity;
         }

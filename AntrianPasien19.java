@@ -1,8 +1,8 @@
-class AntrianPasien08 {
-    Pasien08 head, tail;
+class AntrianPasien19 {
+    Pasien19 head, tail;
 
     void tambahPasien(String nama, String nik, String keluhan, int umur) {
-        Pasien08 baru = new Pasien08(nama, nik, keluhan, umur);
+        Pasien19 baru = new Pasien19(nama, nik, keluhan, umur);
         if (head == null) {
             head = tail = baru;
         } else {
@@ -10,7 +10,16 @@ class AntrianPasien08 {
             tail = baru;
         }
     }
-
+    // Menambah field "lamaSakit" pada setiap pasien
+    void tambahPasien(String nama, String nik, String keluhan, int umur, int lamaSakit) {
+        Pasien19 baru = new Pasien19(nama, nik, keluhan, umur, lamaSakit);
+        if (head == null) {
+            head = tail = baru;
+        } else {
+            tail.next = baru;
+            tail = baru;
+        }
+    }
     String layaniPasien() {
         if (head == null) return null;
         String nama = head.nama;
@@ -24,7 +33,7 @@ class AntrianPasien08 {
             System.out.println("Antrian kosong.");
             return;
         }
-        Pasien08 temp = head;
+        Pasien19 temp = head;
         int no = 1;
         while (temp != null) {
             String nomorAntrian = String.format("%02d", no);
@@ -40,7 +49,7 @@ class AntrianPasien08 {
 
     int hitungAntrian() {
         int count = 0;
-        Pasien08 temp = head;
+        Pasien19 temp = head;
         while (temp != null) {
             count++;
             temp = temp.next;
@@ -48,29 +57,14 @@ class AntrianPasien08 {
         return count;
     }
 
-    // Tambahan: Cari pasien berdasarkan nama
-    Pasien08 cariPasienBerdasarkanNama(String nama) {
-        Pasien08 temp = head;
+    Pasien19 cariPasienBerdasarkanNama(String nama) {
+        Pasien19 temp = head;
         while (temp != null) {
             if (temp.nama.equalsIgnoreCase(nama)) {
                 return temp;
             }
             temp = temp.next;
         }
-        return null;
-    }
-
-    // Tambahan: Cari pasien berdasarkan nomor antrian
-    Pasien08 cariPasienBerdasarkanNomorAntrian(int nomorAntrian) {
-        Pasien08 temp = head;
-        int no = 1;
-        while (temp != null) {
-            if (no == nomorAntrian) {
-                return temp;
-            }
-            temp = temp.next;
-            no++;
-        }
-        return null;
+        return null; // Jika tidak ditemukan
     }
 }
